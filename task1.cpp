@@ -30,15 +30,7 @@ void time_processing(int sampling_time, int interval, int num_sensors){
 
     fprintf(file, "id,time,value\n");
 
-    time_t now = time(NULL);
-    time_t start_time = now - (interval * 3600);
-    
-    struct tm *real_time = localtime(&start_time);
-    real_time->tm_hour = 0;
-    real_time->tm_min = 0;
-    real_time->tm_sec = 0;
-
-    start_time = mktime(real_time);
+    time_t start_time = time(NULL);  // Start from current time
     
     srand(time(NULL)); // Seed the random number generator
 
